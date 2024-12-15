@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-api
+  template:
+    metadata:
+      labels:
+        app: devops-api
+    spec:
+      containers:
+        - name: devops-api
+          image: DevOpsApi 
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_HOST
+              value: "db-service"
+            - name: DB_PASSWORD
+              value: "YourStrong!Password"
+          dependsOn:
+            - db-service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: devops-api-service
+spec:
+  selector:
+    app: devops-api
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: NodePort
