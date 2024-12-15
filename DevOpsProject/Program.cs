@@ -37,7 +37,7 @@ app.UseHttpsRedirection();
 
 var summaries = new[]
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching", "Foggy"
+    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching", "Foggy", "Windy"
 };
 
 // API endpoint to add sample forecasts to the database
